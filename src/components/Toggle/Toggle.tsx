@@ -19,7 +19,9 @@ export function Toggle({
 
   const handleClick = () => {
     if (disabled) return;
-    setInternalChecked(!isChecked);
+    const nextChecked = !isChecked;
+    setInternalChecked(nextChecked);
+    onChange?.(nextChecked);
   };
 
   return (

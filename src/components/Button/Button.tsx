@@ -17,10 +17,13 @@ export function Button({
   loading = false,
   className = "",
 }: ButtonProps) {
+  const isDisabled = disabled || loading;
+
   return (
     <button
       className={`btn btn-${variant} ${disabled ? "btn-disabled" : ""} ${className}`.trim()}
-      onClick={onClick}
+      onClick={isDisabled ? undefined : onClick}
+      disabled={isDisabled}
     >
       {loading ? <span className="btn-spinner">Loading...</span> : children}
     </button>
